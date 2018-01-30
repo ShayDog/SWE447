@@ -2,11 +2,11 @@ var gl = null;
 var cone = null;
 
 function init() {
-   
-
-    gl = WebGLUtils.setupWebGL( canvas );
-    
     var cone = new Cone( gl );
+
+    gl = WebGLUtils.setupWebGL( cone );
+    
+   
     
     if ( !gl ) {
         alert("Unable to setup WebGL");
