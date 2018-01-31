@@ -2,11 +2,11 @@ var gl = null;
 var cone = null;
 
 function init() {
-    var cone = new Cone( gl );
-
-    gl = WebGLUtils.setupWebGL( cone );
-    
    
+
+    gl = WebGLUtils.setupWebGL( canvas );
+    
+    var cone = new Cone( gl );
     
     if ( !gl ) {
         alert("Unable to setup WebGL");
@@ -14,12 +14,11 @@ function init() {
     }
 
     gl.clearColor( 0.0, 0.0, 0.0, 0.0 );
-
-    cone.render();
+    render();
 }
 
 function render() {
-    gl.clear( gl.COLOR_BUFFER_BIT );
+    cone.render();
 }
 
 window.onload = init;
