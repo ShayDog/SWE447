@@ -148,7 +148,7 @@ function render() {
   data = SolarSystem[name2];
   
   
-  planet.PointMode = true;
+  planet.PointMode = false;
 
   
   ms.push();
@@ -167,7 +167,7 @@ function render() {
   data = SolarSystem[name3];
   
   
-  planet.PointMode = true;
+  planet.PointMode = false;
 
   
   ms.push();
