@@ -18,7 +18,7 @@ var gl;
 
 var Planets = {
   Sun : undefined,
-  Mercury : undefined,
+  //Mercury : undefined,
   //Venus : undefined,
   //Earth : undefined,
   //Moon : undefined,
