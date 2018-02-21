@@ -18,16 +18,16 @@ var gl;
 
 var Planets = {
   Sun : undefined,
-  // Mercury : undefined,
-  // Venus : undefined,
-  // Earth : undefined,
-  // Moon : undefined,
-  // Mars : undefined,
-  // Jupiter : undefined,
-  // Saturn : undefined,
-  // Uranus : undefined,
-  // Neptune : undefined,
-  // Pluto : undefined
+  Mercury : undefined,
+  //Venus : undefined,
+  //Earth : undefined,
+  //Moon : undefined,
+  //Mars : undefined,
+  //Jupiter : undefined,
+  //Saturn : undefined,
+  //Uranus : undefined,
+  //Neptune : undefined,
+  //Pluto : undefined
 };
 
 // Viewing transformation parameters
@@ -115,7 +115,7 @@ function render() {
   // about the planets in SolarSystem.  Look at how these are
   // used; it'll simplify the work you need to do.
 
-  var name, planet, data;
+  var name, planet, data, name2, name3, name4, name5, name6, name7, name8, name9, name10;
 
   name = "Sun";
   planet = Planets[name];
@@ -135,6 +135,24 @@ function render() {
   // system (and hence, has no translation to its location).
 
   ms.push();
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name2 = "Mercury";
+  planet = Planets[name2];
+  data = SolarSystem[name2];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
   ms.scale(data.radius);
   gl.useProgram(planet.program);
   gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
