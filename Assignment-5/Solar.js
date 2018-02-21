@@ -153,7 +153,7 @@ function render() {
 
   
   ms.push();
-  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.rotate((1/data.year) * time, [0,2,10]);
   ms.translate(distance,0,0);
   ms.scale(data.radius);
   gl.useProgram(planet.program);
