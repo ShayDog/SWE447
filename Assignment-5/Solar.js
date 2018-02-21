@@ -23,7 +23,7 @@ var Planets = {
   //Earth : undefined,
   //Moon : undefined,
   //Mars : undefined,
-  //Jupiter : undefined,
+  Jupiter : undefined,
   //Saturn : undefined,
   //Uranus : undefined,
   //Neptune : undefined,
@@ -146,6 +146,24 @@ function render() {
   name2 = "Mercury";
   planet = Planets[name2];
   data = SolarSystem[name2];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name3 = "Jupiter";
+  planet = Planets[name3];
+  data = SolarSystem[name3];
   
   
   planet.PointMode = false;
