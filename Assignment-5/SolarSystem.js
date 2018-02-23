@@ -1,6 +1,6 @@
 var SolarSystem = {
   Sun : {
-    radius : .25,  
+    radius : 1.25,  
     distance : 0,
     year : 0,
     color : [ 1.0, 1.0, 0.0, 1.0 ]
