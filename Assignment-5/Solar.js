@@ -21,7 +21,7 @@ var Planets = {
   Mercury : undefined,
   Venus : undefined,
   Earth : undefined,
-  //Moon : undefined,
+  Moon : undefined,
   Mars : undefined,
   Jupiter : undefined,
   Saturn : undefined,
@@ -35,8 +35,8 @@ var V;  // matrix storing the viewing transformation
 
 // Projection transformation parameters
 var P;  // matrix storing the projection transformation
-var near = 10;      // near clipping plane's distance
-var far = 120;      // far clipping plane's distance
+var near = 1;      // near clipping plane's distance
+var far = 360;      // far clipping plane's distance
 
 // Animation variables
 var time = 0.0;      // time, our global time constant, which is 
@@ -296,7 +296,7 @@ function render() {
   planet.render();
   ms.pop();
   
-  name10 = "Earth";
+name10 = "Earth";
   planet = Planets[name10];
   data = SolarSystem[name10];
   
@@ -307,6 +307,7 @@ function render() {
   ms.push();
   ms.rotate((1/data.year) * time, [0,0,1]);
   ms.translate(data.distance,0,0);
+  ms.push();
   ms.scale(data.radius);
   gl.useProgram(planet.program);
   gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
@@ -314,7 +315,22 @@ function render() {
   gl.uniform4fv(planet.uniforms.color, flatten(data.color));
   planet.render();
   ms.pop();
-  //
+  
+  name11 = "Moon";
+  planet = Planets[name11];
+  data = SolarSystem[name11];
+  
+  
+  planet.PointMode = false;
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
   //  Add your code for more planets here!
   //
 
