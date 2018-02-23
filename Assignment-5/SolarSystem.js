@@ -36,8 +36,8 @@ var SolarSystem = {
     color : [ 1.0, 0.0, 0.0, 1.0 ]
   },
   Jupiter : {
-    radius : 31.21,
-    distance : 52.0,
+    radius : 11.21,
+    distance : 5.20,
     year : 11.9,
     color : [ 1.0, 153/255, 0.0, 1.0 ]
   },
