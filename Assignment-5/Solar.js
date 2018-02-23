@@ -18,16 +18,16 @@ var gl;
 
 var Planets = {
   Sun : undefined,
-  //Mercury : undefined,
-  //Venus : undefined,
-  //Earth : undefined,
+  Mercury : undefined,
+  Venus : undefined,
+  Earth : undefined,
   //Moon : undefined,
   Mars : undefined,
   Jupiter : undefined,
   Saturn : undefined,
-  //Uranus : undefined,
-  //Neptune : undefined,
-  //Pluto : undefined
+  Uranus : undefined,
+  Neptune : undefined,
+  Pluto : undefined
 };
 
 // Viewing transformation parameters
@@ -115,7 +115,7 @@ function render() {
   // about the planets in SolarSystem.  Look at how these are
   // used; it'll simplify the work you need to do.
 
-  var name, planet, data, name2, name3, name4, name5, name6, name7, name8, name9, name10;
+  var name, planet, data, name2, name3, name4, name5, name6, name7, name8, name9, name10, name11;
 
   name = "Sun";
   planet = Planets[name];
@@ -143,6 +143,25 @@ function render() {
   planet.render();
   ms.pop();
   
+  
+  name2 = "Mercury";
+  planet = Planets[name2];
+  data = SolarSystem[name2];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
   
   name3 = "Jupiter";
   planet = Planets[name3];
@@ -185,6 +204,101 @@ function render() {
   name5 = "Saturn";
   planet = Planets[name5];
   data = SolarSystem[name5];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name6 = "Uranus";
+  planet = Planets[name6];
+  data = SolarSystem[name6];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name7 = "Neptune";
+  planet = Planets[name7];
+  data = SolarSystem[name7];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name8 = "Pluto";
+  planet = Planets[name8];
+  data = SolarSystem[name8];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name9 = "Venus";
+  planet = Planets[name9];
+  data = SolarSystem[name9];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name10 = "Earth";
+  planet = Planets[name10];
+  data = SolarSystem[name10];
   
   
   planet.PointMode = false;
