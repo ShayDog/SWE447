@@ -22,9 +22,9 @@ var Planets = {
   //Venus : undefined,
   //Earth : undefined,
   //Moon : undefined,
-  //Mars : undefined,
+  Mars : undefined,
   Jupiter : undefined,
-  //Saturn : undefined,
+  Saturn : undefined,
   //Uranus : undefined,
   //Neptune : undefined,
   //Pluto : undefined
@@ -163,6 +163,43 @@ function render() {
   planet.render();
   ms.pop();
 
+  name4 = "Mars";
+  planet = Planets[name4];
+  data = SolarSystem[name4];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  name5 = "Saturn";
+  planet = Planets[name5];
+  data = SolarSystem[name5];
+  
+  
+  planet.PointMode = false;
+
+  
+  ms.push();
+  ms.rotate((1/data.year) * time, [0,0,1]);
+  ms.translate(data.distance,0,0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
   //
   //  Add your code for more planets here!
   //
