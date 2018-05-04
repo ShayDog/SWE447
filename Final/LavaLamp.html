@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="../Common/webgl-utils.js"></script>
+  <script src="../Common/initShaders.js"></script>
+  <script src="../Common/MV.js"></script>
+  <script src="../Common/MatrixStack.js"></script>  
+  <script src="../Common/Sphere.js"></script>
+  <script src="../Common/Cylinder.js"></script>
+  <script src="../Common/Cone.js"></script>
+  <script src="SolarSystem.js"></script>
+  <script src="LavaLamp.js"></script>
+  
+  <script type="x-shader/x-vertex" id="Sphere-vertex-shader">
+  attribute vec4  vPosition;
+
+  uniform mat4  MV;
+  uniform mat4  P;
+
+  void main()
+  {
+    gl_Position = P * MV * vPosition;
+  }
+  </script>
+  <script type="x-shader/x-fragment" id="Sphere-fragment-shader">
+  precision highp float;
+  uniform vec4  color;
+  void main()
+  {
+    gl_FragColor = color;
+  }
+  </script>
+  <script id="Cone-vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+uniform mat4 MV;
+uniform mat4 P;
+void main()
+{
+    gl_PointSize = 10.0;
+    gl_Position =P* MV * vPosition;
+}
+</script>
+
+<script id="Cone-fragment-shader" type="x-shader/x-fragment">
+precision highp float;
+uniform vec4 color;
+void main() {gl_FragColor = color;}
+</script>
+<script id="Cylinder-vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+
+uniform mat4 MV;
+
+void main()
+{
+    gl_PointSize = 5.0;
+    gl_Position = MV * vPosition;
+}
+</script>
+
+<script id="Cylinder-fragment-shader" type="x-shader/x-fragment">
+void main()
+{
+    gl_FragColor = vec4(.20, 0.0, gl_FrontFacing ? 0.2 : 0.0, .2);
+}
+</script>
+</head>
+
+<body>
+  <!--<canvas id="webgl-canvas"  width="1800" height="800"></canvas>-->
+   <canvas id="webgl-canvas"  style="background: url('background.gif')"  width="1800" height="800"></canvas>
+</body>
+</html>
